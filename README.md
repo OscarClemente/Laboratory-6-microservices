@@ -11,6 +11,4 @@
 ![Account in the port 4444](https://raw.github.com/OscarClemente/Laboratory-6-microservices/master/screenshots/account2.png)
 
 ##A brief report describing what happens when you kill the microservice with port 2222. Can the web service provide information about the accounts? Why?
-When you kill the microservice with port 2222, the Web service Microservice, when you try to do an operation, first shows "Refused connection" errores. A few seconds after this, it shows "No instances available for ACCOUNTS-SERVICE". Finally, twenty or thirty seconds after this, it starts working again.
-
-What actually happens is that, when the Account Microservice in port 2222 is shutted down, the WebService Microservice tries to communicate with it and fails. The Webservice Microservice got the Account Microservice address and port from the Service Registration, but now it is down. It takes the WebService Microservice a little time to realize that it is actually down, and then it asks the Service Registration for another Microservice that provides the ACCOUNTS-SERVICE service. The Service Registration asks it with the port of the another Microservice (4444), and then it starts working again.
+Yes, it will keep providing information about the accounts because although the 2222 fails it asks again for a service and as 4444 is alive it keeps working.
